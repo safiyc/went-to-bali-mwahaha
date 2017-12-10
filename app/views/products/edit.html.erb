@@ -1,10 +1,11 @@
-<h1>Edit Product</h1>
+<h3>Edit Product</h3>
+<br>
 
 <%= form_for @product, html: { multipart: true } do |f| %>
-  Image: <%= f.file_field :product_img %>
-  Name: <%= f.text_field :name %>
-  Description: <%= f.text_field :description %>
-  Price: <%= f.text_field :price %>
+  <h5>Name: <%= f.text_field :name %></h5>
+  <p>Description: <%= f.text_field :description %></p>
+  <p>Price: <%= f.text_field :price %></p>
+  <p>Image: <%= f.file_field :product_img %></p>
   <span class="waves-effect waves-light btn"><%= f.submit "Submit" %></span>
 <% end %>
 

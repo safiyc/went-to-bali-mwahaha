@@ -17,12 +17,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass'
 gem 'paperclip', '~> 5.0.0'
+gem 'faker'
 
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry'
-  gem 'faker'
+  gem 'rspec-rails'
+  gem 'launchy'
+  gem 'pry'
+  gem 'shoulda-matchers'
 end
 
 group :development do

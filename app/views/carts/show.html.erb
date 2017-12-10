@@ -1,25 +1,33 @@
-<h1>Shopping Cart</h1>
+<h2>Shopping Cart</h2>
+<br>
 
 <% if @order_items.any? %>
   <% @order_items.each do |item| %>
     <div id="order-item-<%= item.id %>">
-      <p><%= item.product.name %> | <%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"}, remote: true %></p>
-      <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
+      <h4><%= item.product.name %></h4>
+      <p><b>Unit Price:</b> <%= number_to_currency item.product.price %> <b>Quantity:</b> <%= item.quantity %></p>
+      <p><b>Total Price:</b> <%= number_to_currency (item.product.price * item.quantity) %></p>
+      <p><%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"}, remote: true %></p>
     </div>
+    <br>
   <% end %>
-  <p>Your Total: <span class="cart-price"> <%= number_to_currency current_order.total_price %></span></p>
+  <p><b>Your Total:</b> <span class="cart-price"> <%= number_to_currency current_order.total_price %></span></p>
   <p><%= link_to "Finalize order", finalize_path %></p>
 <% else %>
   <p>Your shopping cart is empty.</p>
 <% end %>
+<br>
 
 <% if @previous_orders %>
   <h3>Your order history:</h3>
+  <br>
   <% @previous_orders.each do |order| %>
-    <h4>Order id: <%= order.id %> was completed on: <%= order.updated_at.strftime("%c") %></h4>
+    <h5><b>Order id: <%= order.id %></b> was completed on: <%= order.updated_at.strftime("%c") %></h5>
     <% order.order_items.each do |item| %>
-      <p>Item name: <%= item.product.name %> | Quantity: <%= item.quantity %> | Price: <%= number_to_currency item.product.price %>
+      <p><b>product:</b> <%= item.product.name %> <b>Quantity:</b> <%= item.quantity %> <b>Price:</b> <%= number_to_currency item.product.price %>
     <% end %>
-    <p>Total cost: <%= number_to_currency order.total_price %>
+    <p><b>Total cost:</b> <%= number_to_currency order.total_price %>
   <% end %>
 <% end %>
+
+<p><%= link_to "Return to home", products_path %></p>
