@@ -3,39 +3,41 @@
 <div class="row">
   <div class="section">
     <% @products.each do |product| %>
-      <div class="col s4">
+      <div class="col s4 product-height">
         <div id= "product-show-<%= product.id %>">
+          <div>
+            <small>
+              <% if current_user && current_user.admin %>
+              <%= link_to "admin access", product_path(product) %>
+              <% end %>
+            </small>
+          </div>
           <%= link_to product_path(product), remote: true do %>
             <h5><%= product.name %></h5>
             <%= image_tag product.product_img.url(:product_index) %>
-            <div>
-              <small>
-                <% if current_user && current_user.admin %>
-                <%= link_to "admin access", product_path(product) %>
-                <% end %>
-              </small>
-            </div>
+
           <% end %>
         </div>
         <div class="product-hide" id= "product-hide-<%= product.id %>">
+          <div>
+            <small>
+              <% if current_user && current_user.admin %>
+              <%= link_to "admin access", product_path(product) %>
+              <% end %>
+            </small>
+          </div>
           <%= link_to product_path(product), remote: true do %>
             <h5><%= product.name %></h5>
             <%= image_tag product.product_img.url(:product_index) %>
             <p><%= number_to_currency product.price %></p>
             <p>Description: <%= product.description %></p>
-            <div>
-              <small>
-                <% if current_user && current_user.admin %>
-                <%= link_to "admin access", product_path(product) %>
-                <% end %>
-              </small>
-            </div>
+
           <% end %>
         </div>
         <%= form_for @order_item, remote: true do |f| %>
           <%= f.hidden_field :product_id, value: product.id %>
-          <%= f.number_field :quantity, placeholder: "add quantity" %>
-          <span class="waves-effect waves-light btn"><%= f.submit "Add to cart" %></span>
+          <div><%= f.number_field :quantity, placeholder: "quantity:" %>
+          <span class="waves-effect waves-light btn"><%= f.submit "Add to cart" %></span></div>
         <% end %>
       </div>
     <% end %>
