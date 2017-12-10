@@ -21,7 +21,7 @@
           <%= link_to product_path(product), remote: true do %>
             <h5><%= product.name %></h5>
             <%= image_tag product.product_img.url(:product_index) %>
-            <p>$<%= product.price %></p>
+            <p><%= number_to_currency product.price %></p>
             <p>Description: <%= product.description %></p>
             <div>
               <small>

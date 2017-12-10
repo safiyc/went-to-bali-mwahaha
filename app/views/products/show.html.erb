@@ -1,6 +1,6 @@
 <h2><%=@product.name%></h2>
-<p><%= image_tag @product.product_img.url(:product_show) %></p>
-<p>$<%=@product.price%></p>
+<p><%=image_tag @product.product_img.url(:product_show)%></p>
+<p><%=number_to_currency @product.price%></p>
 <p><%=@product.description%></p>
 
 
