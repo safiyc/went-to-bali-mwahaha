@@ -1,6 +1,8 @@
 <h2><%=@product.name%></h2>
-<p><%=@product.description%></p>
+<p><%= image_tag @product.product_img.url(:product_show) %></p>
 <p>$<%=@product.price%></p>
+<p><%=@product.description%></p>
+
 
 <% if current_user && current_user.admin %>
   <%= link_to "Edit", edit_product_path(@product) %>

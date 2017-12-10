@@ -1,6 +1,7 @@
 <h1>Add a product.</h1>
 
-<%= form_for @product do |f| %>
+<%= form_for @product, url: products_path, html: { multipart: true } do |f| %>
+  Image: <%= f.file_field :product_img %>
   Name: <%= f.text_field :name %>
   Description: <%= f.text_field :description %>
   Price: <%= f.number_field :price %>

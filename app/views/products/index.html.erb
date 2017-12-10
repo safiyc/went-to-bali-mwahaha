@@ -7,7 +7,7 @@
         <div id= "product-show-<%= product.id %>">
           <%= link_to product_path(product), remote: true do %>
             <h5><%= product.name %></h5>
-            $<%= product.price %>
+            <%= image_tag product.product_img.url(:product_index) %>
             <div>
               <small>
                 <% if current_user && current_user.admin %>
@@ -20,8 +20,16 @@
         <div class="product-hide" id= "product-hide-<%= product.id %>">
           <%= link_to product_path(product), remote: true do %>
             <h5><%= product.name %></h5>
-            $<%= product.price %>
+            <%= image_tag product.product_img.url(:product_index) %>
+            <p>$<%= product.price %></p>
             <p>Description: <%= product.description %></p>
+            <div>
+              <small>
+                <% if current_user && current_user.admin %>
+                <%= link_to "admin access", product_path(product) %>
+                <% end %>
+              </small>
+            </div>
           <% end %>
         </div>
         <%= form_for @order_item, remote: true do |f| %>
