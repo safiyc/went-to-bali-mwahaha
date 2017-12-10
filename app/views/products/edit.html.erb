@@ -1,4 +1,4 @@
-<h1>Add a product.</h1>
+<h1>Edit Product</h1>
 
 <%= form_for @product do |f| %>
   Name: <%= f.text_field :name %>
@@ -6,3 +6,5 @@
   Price: <%= f.number_field :price %>
   <%= f.submit "Submit" %>
 <% end %>
+
+<p><%= link_to "Return to product", product_path %></p>
