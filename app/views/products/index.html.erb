@@ -7,15 +7,15 @@
         <div id= "product-show-<%= product.id %>">
 
           <%= link_to product_path(product), remote: true do %>
-            <h4><b><%= product.name %></b></h4>
+            <h4><%= product.name %></h4>
             <%= image_tag product.product_img.url(:product_index) %>
 
           <% end %>
         </div>
         <div class="product-hide" id= "product-hide-<%= product.id %>">
-      
+
           <%= link_to product_path(product), remote: true do %>
-            <h4><%= product.name %></h4>
+            <h4><b><%= product.name %></b></h4>
             <div><%= image_tag product.product_img.url(:product_index) %></div>
             <p>
               <b>Description:</b> <%= product.description %>

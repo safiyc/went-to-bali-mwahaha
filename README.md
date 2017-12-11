@@ -24,7 +24,7 @@ This program lets admin users create/delete products. Basic users can add produc
 
 ## Known Bugs
 
-* Image seeds are not loading because of issues with Faker::LoremPixel.image("50x60")
+* Image seeds are not loading because of issues with Faker::LoremPixel.image("200x200")
 
 * Cart qty is updated by 1 qty even when inputting more than 1 qty of products
 
